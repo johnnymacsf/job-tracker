@@ -1,12 +1,16 @@
 // components/SignUpForm.tsx
+'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SignUpForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,11 +25,12 @@ export default function SignUpForm() {
 
     const data = await response.json();
     if (response.status === 201) {
-      setSuccess(data.message); // User created successfully
+      setSuccess(data.message);
       setEmail('');
       setPassword('');
+
     } else {
-      setError(data.message); // Error message
+      setError(data.message); 
     }
   };
 

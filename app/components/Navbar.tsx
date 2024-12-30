@@ -30,7 +30,7 @@ export default function Navbar() {
           {isAuthenticated && (
             <>
               <Link
-                href="/add-post"
+                href={"/add-post"}
                 className="inline-flex items-center justify-center p-4 rounded border-2 border-white text-white hover:bg-blue-300"
               >
                 Add Application
