@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,14 +23,16 @@ export default function LoginForm() {
 
     const data = await response.json();
     if (response.status === 200) {
-      alert(data.message); // Successful login
+      console.log("Going to feed")
+      localStorage.setItem("token", data.token)
+      router.push("/feed")
     } else {
       setError(data.message); // Show error message
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4">
+    <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-4 text-black bg-gray-100">
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-white-800">Email</label>
         <input
@@ -52,18 +56,9 @@ export default function LoginForm() {
         />
       </div>
       {error && <p className="text-red-500 text-sm">{error}</p>}
-      <button type="submit" className="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">
+      <button type="submit" className="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400">
         Login
       </button>
-
-      <div className='mt-4 text-center'>
-        <p className='text-sm text-white-800'>
-            Don't have an account? {' '}
-            <Link href='signup' className="text-white-600 hover:underline">
-                Sign up
-            </Link>
-        </p>
-      </div>
     </form>
   );
 }

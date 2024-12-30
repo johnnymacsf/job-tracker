@@ -9,10 +9,10 @@ import SignUpForm from './components/SignUpForm';
 export default function Home() {
   const [showSignUp, setShowSignUp] = useState(false); // State to toggle between login and sign up
 
-  return (
-    <div>
+  return ( 
+    <div className='min-h-screen flex flex-col bg-gray-100'>
       <Navbar />
-      <main className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center text-black">
         <h1 className="text-center text-2xl font-bold mt-10">
           {showSignUp ? 'Sign Up' : 'Login'}
         </h1>
@@ -21,7 +21,7 @@ export default function Home() {
         {showSignUp ? <SignUpForm /> : <LoginForm />}
 
         {/* Toggle between Login and Sign Up */}
-        <p className="text-center mt-4">
+        <p className="text-center mt-4 text-black">
           {showSignUp ? (
             <>Already have an account?{' '}
               <span
@@ -35,7 +35,7 @@ export default function Home() {
             <>Don't have an account?{' '}
               <span
                 onClick={() => setShowSignUp(true)} // Switch to sign-up form
-                className="text-blue-600 hover:underline cursor-pointer"
+                className="text-blue-600 hover:underline cursor-pointer hover:text-blue-400"
               >
                 Sign up
               </span>
