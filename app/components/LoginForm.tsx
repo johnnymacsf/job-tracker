@@ -25,6 +25,10 @@ export default function LoginForm() {
     if (response.status === 200) {
       console.log("Going to feed")
       localStorage.setItem("token", data.token)
+      localStorage.setItem("userId", data.userId);
+
+      console.log(data.userId);
+      
       router.push("/feed")
     } else {
       setError(data.message); // Show error message

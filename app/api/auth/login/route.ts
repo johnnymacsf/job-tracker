@@ -11,6 +11,6 @@ export async function POST(req: Request) {
     if(!user || (password !== user.password)){
         return NextResponse.json( { message: 'Invalid credentials '}, { status: 401});
     }else{
-        return NextResponse.json( { message: "Login successful" });
+        return NextResponse.json( { message: "Login successful", userId: user.id});
     }
 }

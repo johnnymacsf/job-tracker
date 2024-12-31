@@ -1,21 +1,21 @@
 'use client';
+
 import React from "react";
 import { useState } from "react";
 import {useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function AddPost() {
+    const router = useRouter();
     const [jobTitle, setJobTitle] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [status, setStatus] = useState('');
     const [description, setDescription] = useState('');
-
-    const router = useRouter();
-
     
     return(
         <div className="bg-gray-100 min-h-screen">
             <nav className="bg-blue-500 p-4 flex justify-between items-center">
-                <h1 className="text-white text-4xl underline text-center flex-1">Add Application</h1>
+                <h1 className="text-white text-5xl text-center flex-1">Add Application</h1>
                 <button onClick={() => router.back()} className="text-white text-lg px-4 py-2 rounded border-2 border-white hover:bg-blue-300 ml-auto">
                     Back
                 </button>
@@ -60,6 +60,9 @@ export default function AddPost() {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black placeholder-black"
                     />
                 </div>
+                <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-300">
+                    Submit
+                </button>
             </form>
             
         </div>

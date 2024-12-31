@@ -24,7 +24,7 @@ export default function Navbar() {
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-4xl font-bold">
-          <Link href="/">Job Application Tracker</Link>
+          <h1>Job Application Tracker</h1>
         </div>
         <div className="ml-auto space-x-5">
           {isAuthenticated && (
