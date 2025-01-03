@@ -1,9 +1,7 @@
-'use client';
+'use client'
 
-import React from "react";
-import { useState } from "react";
-import {useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddPost() {
     const router = useRouter();
@@ -11,7 +9,13 @@ export default function AddPost() {
     const [companyName, setCompanyName] = useState('');
     const [status, setStatus] = useState('');
     const [description, setDescription] = useState('');
-    
+    const [userId, setUserId] = useState<string | null>(null);
+
+    useEffect(() => {
+        const currentUserId = localStorage.getItem('userId');
+        setUserId(currentUserId); // Set the userId
+    }, []);
+
     return(
         <div className="bg-gray-100 min-h-screen">
             <nav className="bg-blue-500 p-4 flex justify-between items-center">
@@ -60,11 +64,14 @@ export default function AddPost() {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black placeholder-black"
                     />
                 </div>
+                {/* Display userId */}
+                {userId && (
+                    <p className="text-center text-lg text-gray-700">Current User ID: {userId}</p>
+                )}
                 <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-300">
                     Submit
                 </button>
             </form>
-            
         </div>
-    )
+    );
 }
