@@ -16,6 +16,27 @@ export default function AddPost() {
         setUserId(currentUserId); // Set the userId
     }, []);
 
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+
+        try{
+            fetch('/api/add-post', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({jobTitle, companyName, status, description, userId}) })
+        }catch(error: any){
+            console.error(error);
+        }
+
+        setJobTitle('');
+        setCompanyName('');
+        setStatus('');
+        setDescription('');
+        setUserId('');
+    }
+
     return(
         <div className="bg-gray-100 min-h-screen">
             <nav className="bg-blue-500 p-4 flex justify-between items-center">
@@ -24,7 +45,7 @@ export default function AddPost() {
                     Back
                 </button>
             </nav>
-            <form className="max-w-md mx-auto p-4 bg-white rounded shadow">
+            <form className="max-w-md mx-auto p-4 bg-white rounded shadow" onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="jobTitle" className="block text-lg font-medium text-blue-500 text-center flex-1">Job Title</label>
                     <input type="text" id="jobTitle" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} required 
@@ -64,7 +85,6 @@ export default function AddPost() {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black placeholder-black"
                     />
                 </div>
-                {/* Display userId */}
                 {userId && (
                     <p className="text-center text-lg text-gray-700">Current User ID: {userId}</p>
                 )}
