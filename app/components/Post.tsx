@@ -8,15 +8,20 @@ interface PostProps {
   }
 
 export default function Post({id, jobTitle, companyName, status, description}: PostProps) {
+    console.log(status)
     const getStatusColor = (status: string) => {
         switch (status) {
             case 'Interviewing':
+            case 'interviewing':
                 return 'text-blue-500'; 
             case 'Rejected':
+            case 'rejected':
                 return 'text-red-500'; 
             case 'Pending':
+            case 'pending':
                 return 'text-yellow-500'; 
             case 'Job Offered':
+            case 'job offered':
                 return 'text-green-500';
             case 'Offer Accepted':
                 return 'text-green-800'

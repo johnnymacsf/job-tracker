@@ -68,11 +68,11 @@ export default function AddPost() {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black"
                     >
                         <option value="" disabled>Select a status</option>
-                        <option value="interviewing">Interviewing</option>
-                        <option value="rejected">Rejected</option>
-                        <option value="pending">Pending</option>
-                        <option value="job offered">Job Offered</option>
-                        <option value="offer accepted">Offer Accepted</option>
+                        <option value="Interviewing">Interviewing</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Job offered">Job Offered</option>
+                        <option value="Offer accepted">Offer Accepted</option>
                     </select>
                 </div>
                 <div className="mb-4">

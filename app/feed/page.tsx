@@ -54,12 +54,7 @@ export default function Feed() {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
-      <h1 className="text-center text-2xl mt-6 font-bold text-black underline mb-4">Your Job Applications</h1>
-      {userId ? (
-        <p className="text-center text-xl text-black mb-6">Current user Id: {userId}</p>
-      ) : (
-        <p className="text-center text-xl text-black mb-6">User ID not found</p>
-      )}
+      <h1 className="text-center text-4xl mt-6 font-bold text-black underline mb-4">Your Job Applications</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-4'>
       {posts.length > 0 ? (
           posts.map((post) => (
@@ -73,7 +68,10 @@ export default function Feed() {
             />
           ))
         ) : (
-          <p className="text-center text-xl text-black">No applications found.</p>
+          <div className='col-span-full'>
+            <p className="text-center text-2xl text-black mb-2">No applications found.</p>
+            <p className="text-center text-2xl text-black">Consider adding an application to track it!</p>
+          </div>
         )}
       </div>
     </div>
