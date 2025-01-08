@@ -1,3 +1,4 @@
+import DeletePostButton from "./DeletePostButton";
 
 interface PostProps {
     id: string;
@@ -31,7 +32,10 @@ export default function Post({id, jobTitle, companyName, status, description}: P
       };
 
     return(
-        <div className="border border-gray-600 shadow-lg rounded-lg p-6 bg-white text-black h-full flex flex-col items-center">
+        <div className="relative border border-gray-600 shadow-lg rounded-lg p-6 bg-white text-black h-full flex flex-col items-center">
+            <div className="absolute top-2 left-2">
+                <DeletePostButton postId={id} />
+            </div>
             <h3 className="text-2xl font-bold border-b-2 border-gray-300">{jobTitle}</h3>
             <h3 className="text-xl italic">{companyName}</h3>
             <h3 className={`text-xl mt-2 text-center ${getStatusColor(status)}`}>{status}</h3>
