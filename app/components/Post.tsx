@@ -1,4 +1,5 @@
 import DeletePostButton from "./DeletePostButton";
+import EditPostButton from "./EditPostButton";
 
 interface PostProps {
     id: string;
@@ -24,7 +25,7 @@ export default function Post({id, jobTitle, companyName, status, description}: P
             case 'Job Offered':
             case 'job offered':
                 return 'text-green-500';
-            case 'Offer Accepted':
+            case 'Offer accepted':
                 return 'text-green-800'
             default:
                 return 'text-gray-600';
@@ -35,6 +36,9 @@ export default function Post({id, jobTitle, companyName, status, description}: P
         <div className="relative border border-gray-600 shadow-lg rounded-lg p-6 bg-white text-black h-full flex flex-col items-center">
             <div className="absolute top-2 left-2">
                 <DeletePostButton postId={id} />
+            </div>
+            <div className="absolute top-2 right-2">
+                <EditPostButton postId={id} />
             </div>
             <h3 className="text-2xl font-bold border-b-2 border-gray-300">{jobTitle}</h3>
             <h3 className="text-xl italic">{companyName}</h3>

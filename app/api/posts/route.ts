@@ -39,3 +39,30 @@ export async function DELETE(req: NextRequest){
     return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
   }
 }
+
+export async function PUT(req: NextRequest){
+  const {searchParams} = req.nextUrl;
+  const postId = searchParams.get('postId');
+
+  if(!postId){
+    return NextResponse.json({error: 'Post ID is required'}, {status: 400})
+  }
+
+  try {
+    const body = await req.json();
+    const { status } = body;
+
+    if(!status){
+      return NextResponse.json({ error: 'Status is required' }, { status: 400 });
+    }
+    const updatedPost = await prisma.application.update({
+      where: { id: postId},
+      data: {status},
+    });
+
+    return NextResponse.json(updatedPost);
+  }catch(error: any){
+    console.error('Error updating post:', error);
+    return NextResponse.json({ error: 'Failed to update post'}, { status: 500});
+  }
+}
