@@ -9,9 +9,18 @@ export default function Navbar() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check for authentication token in local storage
     const token = localStorage.getItem('token');
-    setIsAuthenticated(!!token); // Set `isAuthenticated` to true if token exists
+    setIsAuthenticated(!!token);
+
+    //detect when page is exited, set isAuthenticated back to false
+    const handleBeforeUnload = () => {
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
 
   const handleLogout = () => {
