@@ -13,19 +13,22 @@ export default function AddPost() {
 
     useEffect(() => {
         const currentUserId = localStorage.getItem('userId');
-        setUserId(currentUserId); // Set the userId
+        setUserId(currentUserId);
     }, []);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         try{
-            fetch('/api/add-post', {
+            const response = await fetch('/api/add-post', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({jobTitle, companyName, status, description, userId}) })
+                body: JSON.stringify({jobTitle, companyName, status, description, userId}) });
+            if(response.ok){
+                window.alert("Successfully added your application! Great work!")
+            }
         }catch(error: any){
             console.error(error);
         }
@@ -85,9 +88,6 @@ export default function AddPost() {
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-black placeholder-black"
                     />
                 </div>
-                {userId && (
-                    <p className="text-center text-lg text-gray-700">Current User ID: {userId}</p>
-                )}
                 <button type="submit" className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-300">
                     Submit
                 </button>

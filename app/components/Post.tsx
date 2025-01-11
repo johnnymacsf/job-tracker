@@ -6,7 +6,7 @@ interface PostProps {
     jobTitle: string;
     companyName: string;
     status: string;
-    description: string | null; // Use null for optional or nullable fields
+    description: string | null;
   }
 
 export default function Post({id, jobTitle, companyName, status, description}: PostProps) {

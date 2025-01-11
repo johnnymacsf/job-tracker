@@ -1,31 +1,30 @@
-// pages/Home.tsx or your main page
 'use client';
 
 import { useState } from 'react';
-import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 
 export default function Home() {
-  const [showSignUp, setShowSignUp] = useState(false); // State to toggle between login and sign up
-
+  const [showSignUp, setShowSignUp] = useState(false);
   return ( 
     <div className='min-h-screen flex flex-col bg-gray-100'>
-      <Navbar />
+      <nav className="bg-blue-500 p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-white text-4xl font-bold">
+            <h1>Job Application Tracker</h1>
+        </div>
+        </div>
+      </nav>
       <main className="flex flex-col items-center justify-center text-black">
         <h1 className="text-center text-2xl font-bold mt-10">
           {showSignUp ? 'Sign Up' : 'Login'}
         </h1>
-
-        {/* Conditionally render either LoginForm or SignUpForm */}
         {showSignUp ? <SignUpForm /> : <LoginForm />}
-
-        {/* Toggle between Login and Sign Up */}
         <p className="text-center mt-4 text-black">
           {showSignUp ? (
             <>Already have an account?{' '}
               <span
-                onClick={() => setShowSignUp(false)} // Switch to login form
+                onClick={() => setShowSignUp(false)}
                 className="text-blue-600 hover:underline cursor-pointer"
               >
                 Login
@@ -34,7 +33,7 @@ export default function Home() {
           ) : (
             <>Don't have an account?{' '}
               <span
-                onClick={() => setShowSignUp(true)} // Switch to sign-up form
+                onClick={() => setShowSignUp(true)}
                 className="text-blue-600 hover:underline cursor-pointer hover:text-blue-400"
               >
                 Sign up

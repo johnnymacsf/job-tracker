@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const posts = await prisma.application.findMany({
-      where: { authorId: userId }, // Use 'authorId' for the relationship
+      where: { authorId: userId },
     });
     return NextResponse.json(posts);
   } catch (error) {

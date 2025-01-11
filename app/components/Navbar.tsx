@@ -11,16 +11,6 @@ export default function Navbar() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsAuthenticated(!!token);
-
-    //detect when page is exited, set isAuthenticated back to false
-    const handleBeforeUnload = () => {
-      localStorage.removeItem('token');
-      setIsAuthenticated(false);
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
   }, []);
 
   const handleLogout = () => {

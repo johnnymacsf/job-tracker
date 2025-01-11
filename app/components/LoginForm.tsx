@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -31,7 +30,7 @@ export default function LoginForm() {
       
       router.push("/feed")
     } else {
-      setError(data.message); // Show error message
+      setError(data.message);
     }
   };
 

@@ -1,4 +1,3 @@
-// components/SignUpForm.tsx
 'use client';
 
 import { useState } from 'react';
@@ -9,8 +8,6 @@ export default function SignUpForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
