@@ -23,10 +23,10 @@ export default function Post({id, jobTitle, companyName, status, description}: P
             case 'pending':
                 return 'text-yellow-500'; 
             case 'Job Offered':
-            case 'job offered':
+            case 'Job offered':
                 return 'text-green-500';
             case 'Offer accepted':
-                return 'text-green-800'
+                return 'text-green-700'
             default:
                 return 'text-gray-600';
         }

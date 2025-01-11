@@ -1,4 +1,6 @@
 'use client';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DeletePostButton({postId}: any) {
     async function handleClick(){
@@ -8,10 +10,7 @@ export default function DeletePostButton({postId}: any) {
             });
 
             if(response.ok){
-                console.log(`Post ${postId} deleted successfully`);
-
                 setTimeout(()=> {
-                    alert("Successfully deleted application post")
                     location.reload();
                 }, 2000);
             }else{

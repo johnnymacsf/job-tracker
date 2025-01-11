@@ -1,6 +1,8 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditPostPage = () => {
     const router = useRouter();
@@ -25,8 +27,9 @@ const EditPostPage = () => {
             });
 
             if (response.ok) {
-                const updatedPost = await response.json();
-                console.log('Post updated:', updatedPost);
+                toast.success("Successfully edited your application post!");
+            }else{
+                toast.error("Uh oh! Something went wrong trying to update your application post status!")
             }
         } catch (error) {
             console.error("Error saving post: ", error);
@@ -35,6 +38,7 @@ const EditPostPage = () => {
 
     return (
         <div className="bg-gray-100 min-h-screen">
+            <ToastContainer autoClose={5000}/>
             <nav className="bg-blue-500 p-4 flex justify-between items-center">
                 <h1 className="text-white text-5xl text-center flex-1">Update Application</h1>
                 <button onClick={() => router.back()} className="text-white text-lg px-4 py-2 rounded border-2 border-white hover:bg-blue-300 ml-auto">

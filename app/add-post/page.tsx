@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddPost() {
     const router = useRouter();
@@ -27,7 +29,9 @@ export default function AddPost() {
                 },
                 body: JSON.stringify({jobTitle, companyName, status, description, userId}) });
             if(response.ok){
-                window.alert("Successfully added your application! Great work!")
+                toast.success("Successfully added your application! Great work!");
+            } else {
+                toast.error("Uh Oh! Error adding application post.")
             }
         }catch(error: any){
             console.error(error);
@@ -42,6 +46,7 @@ export default function AddPost() {
 
     return(
         <div className="bg-gray-100 min-h-screen">
+            <ToastContainer autoClose={5000}/>
             <nav className="bg-blue-500 p-4 flex justify-between items-center">
                 <h1 className="text-white text-5xl text-center flex-1">Add Application</h1>
                 <button onClick={() => router.back()} className="text-white text-lg px-4 py-2 rounded border-2 border-white hover:bg-blue-300 ml-auto">
